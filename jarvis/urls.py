@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',  views.home, name="home"),
     url(r'^produits/', include('produit.urls')),
+    url(r'^fournisseurs/', include('fournisseurs.urls')),
     url(r'^panier/', include('panier.urls')),
 ]
