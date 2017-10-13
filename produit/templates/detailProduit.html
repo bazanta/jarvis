@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="jumbotron">
+                    <h1>{{produit.nom}}</h1>
+                    <p>
+                        {{produit.descLong}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

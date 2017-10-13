@@ -18,8 +18,8 @@
     {% load bootstrap3 %}
     {% bootstrap_css %}
     {% bootstrap_messages %}
+    <!-- Block css pour les pages -->
     {% block css %}
-       <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
     {% endblock %}
 </head>
 
@@ -39,12 +39,12 @@
         <div class="collapse navbar-collapse" id="menu">
             <ul class="nav navbar-nav navbar-right text-center">
                 <li class="active">
-                    <a href="#">
+                    <a href="{% url 'home' %}">
                         Accueil
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{% url 'indexProduit' %}">
                         Produits
                     </a>
                 </li>
@@ -76,8 +76,8 @@
     </footer>
     
     <!-- Chargement du javascript -->
-    <script src="{% bootstrap_jquery_url %}"></script>
-    {% bootstrap_javascript %}
+    {% bootstrap_javascript jquery=1 %}
+    <!-- Block javascript pour les pages -->
     {% block javascript %}
     {% endblock %}
 </body>
