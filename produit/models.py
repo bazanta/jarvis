@@ -5,6 +5,7 @@ class FicheProduit(models.Model):
     reference = models.CharField(max_length=45)
     descCourte = models.CharField(max_length=100)
     descLong = models.CharField(max_length=255)
+    prix = models.DecimalField(max_digits=19, decimal_places=10)
     enStock = models.BooleanField(default=True)
 
     def __str__(self):

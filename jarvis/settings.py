@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'bootstrap3',
     'jarvis',
     'produit',
+    'panier',
+    'cart',
 ]
 
 MIDDLEWARE = [
