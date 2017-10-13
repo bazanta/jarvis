@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'jarvis',
     'produit',
+	'fournisseurs',
 ]
 
 MIDDLEWARE = [
