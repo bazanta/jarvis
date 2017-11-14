@@ -21,7 +21,7 @@ def contact(request):
             try:
                 send_mail(subject, message, from_email, ['admin@example.com'])
             except BadHeaderError:
-                messages.success(request, 'Probleme interne, impossible d\'envoyer un mail.')
+                messages.error(request, 'Probleme interne, impossible d\'envoyer un mail.')
                 return render(request, "contact.html", {'form': form})
             messages.success(request, 'Envoie en cours.')
             return redirect('contact')

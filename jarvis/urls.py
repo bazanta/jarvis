@@ -5,12 +5,11 @@ from django.conf.urls.static import static
 from jarvis import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^$',  views.home, name="home"),
     url(r'^mentions/$', views.mentions, name='mentions'),
     url(r'^contact/$', views.contact, name='contact'),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^produits/', include('produit.urls')),
-    url(r'^fournisseurs/', include('fournisseurs.urls')),
     url(r'^panier/', include('panier.urls')),
     url(r'^users/', include('register.urls')),
 ]

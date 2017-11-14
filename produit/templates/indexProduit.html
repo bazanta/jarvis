@@ -20,7 +20,10 @@
                             {{ produit.descCourte }}
                         </div>
                         <div class="card_footer">
-                            {{ produit.reference }} - {{produit.prix|floatformat}}€
+                            {{ produit.reference }} - {{produit.prix|floatformat}}€ <br />
+                            {% if produit.commentaires.count > 0 %}
+                                Commentaires: {{ produit.commentaires.count }}
+                            {% endif %}
                         </div>
                         <a href="{% url 'addProductPanier' id=produit.id %}" class="btn btn-success">
                             Ajouter

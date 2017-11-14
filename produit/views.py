@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from models import *
@@ -29,6 +30,7 @@ def addProductPanier(request, id):
 def detailProduit(request, id):
     produit = FicheProduit.objects.get(id=id)
 
+    formCommentaire = CommentForm()
     if request.method == 'POST':
         form = ProduitForm(request.POST)
         if form.is_valid():
@@ -41,5 +43,22 @@ def detailProduit(request, id):
     else:
         form = ProduitForm(initial={'produit': id})
 
-    return render(request,'detailProduit.html', {'produit' : produit, 'form' : form})
+    return render(request,'detailProduit.html', {'produit' : produit, 'form' : form, 'formCommentaire' : formCommentaire})
 
+@login_required
+def addCommentaire(request, id):
+    produit = FicheProduit.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            # Ajout du commentaire
+            comment = form.save(commit=False)
+            comment.produit = produit
+            comment.auteur = request.user
+            comment.save()
+            # Redirection
+            messages.success(request, 'Commentaire ajoute.')
+            return redirect('detailProduit', id=id)
+    messages.error(request, 'Commentaire incorrecte.')
+    return redirect('detailProduit', id=id)
