@@ -6,7 +6,7 @@ class FicheProduit(models.Model):
     descCourte = models.CharField(max_length=100)
     descLong = models.CharField(max_length=255)
     prix = models.DecimalField(max_digits=19, decimal_places=9)
-    enStock = models.BooleanField(default=True)
+    stock = models.IntegerField()
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):

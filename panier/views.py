@@ -26,6 +26,11 @@ def panierSup(request, id):
     delete_from_cart(request, id)
     return redirect('panier') 
 
+def panierSupAll(request):
+    cart = Cart(request)
+    cart.clear()  
+    return redirect('panier') 
+
 def panierModif(request, id):
     form = ProduitForm(request.POST)
     if form.is_valid():

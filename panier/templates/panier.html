@@ -44,6 +44,14 @@
                     {% endfor %}
                 </table>
             </div>
+
+            {% if cart.count > 0%}
+            <div class="col-lg-12 center-block">
+                <a href="{% url 'panierSupAll' %}" class="btn btn-danger">
+                    Vider le panier
+                </a>
+            </div>
+            {% endif %}
         </div>
     </div>
     
