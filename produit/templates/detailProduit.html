@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {{ block.super }} - Produit 
+{% endblock %}
+
 {% block content %}
     <div class="container-fluid">
         <div class="row">
@@ -9,6 +13,13 @@
                     <p>
                         {{produit.descLong}}
                     </p>
+                </div>
+                <div>
+                    <form action="{% url 'detailProduit' id=produit.id %}" method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input type="submit" class="btn btn-success" value="Ajouter" />
+                    </form>
                 </div>
             </div>
         </div>

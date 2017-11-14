@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {{ block.super }} - Produits
+{% endblock %}
+
 {% block content %}
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 text-center">
                 {% for produit in produits %}
+                <img src="{{produit.image.url}}" class="img-responsive watch-right" alt="{{ produit.nom }}" />
                 <a href="{% url 'detailProduit' id=produit.id %}">
-                    <div class="card" style="border: 1px solid black; margin:10px;">
+                    <div class="card" style="border: 1px solid rgb(70, 65, 65); margin:10px;">
                         <div class="card_title">
                             {{ produit.nom }}
-                        </div>
+                        </div>                        
                         <div class="card_content">
                             {{ produit.descCourte }}
                         </div>
                         <div class="card_footer">
                             {{ produit.reference }}
                         </div>
-                </div>
-                </a>
+                    </div>
+                </a>                
                 {% endfor %}
             </div>
         </div>

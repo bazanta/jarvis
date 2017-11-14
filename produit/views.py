@@ -1,16 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from models import *
+from forms import *
+from panier.views import *
 
 def indexProduit(request):
     produits = FicheProduit.objects.all()
 
     # Gestion de la pagination
-    paginator = Paginator(produits, 3) 
+    paginator = Paginator(produits, 5) 
     page = request.GET.get('page')
     try:
         produits = paginator.page(page)
@@ -24,5 +27,18 @@ def indexProduit(request):
 
 def detailProduit(request, id):
     produit = FicheProduit.objects.get(id=id)
-    return render(request,'detailProduit.html', {'produit' : produit})
+
+    if request.method == 'POST':
+        form = ProduitForm(request.POST)
+        if form.is_valid():
+            # Ajout du produit au panier
+            qte = form.cleaned_data['quantite']
+            add_to_cart(request, id, qte)
+            # Redirection
+            messages.success(request, 'Ajout panier OK')
+            return redirect('detailProduit', id=id)
+    else:
+        form = ProduitForm(initial={'produit': id})
+
+    return render(request,'detailProduit.html', {'produit' : produit, 'form' : form})
 
