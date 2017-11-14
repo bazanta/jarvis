@@ -26,3 +26,6 @@ def contact(request):
             messages.success(request, 'Envoie en cours.')
             return redirect('contact')
     return render(request, "contact.html", {'form': form})
+
+def mentions(request):
+    return render(request, "mentions.html")
