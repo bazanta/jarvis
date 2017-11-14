@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
 
+    {% load staticfiles %}
     <!-- Titre -->
     <title>
         {% block title %}
@@ -17,8 +18,9 @@
     <!-- Chargement du CSS -->
     {% load bootstrap3 %}
     {% bootstrap_css %}
-    {% bootstrap_messages %}
-    <!-- Block css pour les pages -->
+    <!-- Block css pour les pages 
+        <link rel="stylesheet" href="{% static 'css/news.css' %}"> 
+    -->
     {% block css %}
     {% endblock %}
 </head>
@@ -38,30 +40,47 @@
         </div>
         <div class="collapse navbar-collapse" id="menu">
             <ul class="nav navbar-nav navbar-right text-center">
-                <li class="active">
+                <li {% if request.resolver_match.url_name == "home" %}class="active"{% endif %}>
                     <a href="{% url 'home' %}">
                         Accueil
                     </a>
                 </li>
-                <li>
+                <li {% if request.resolver_match.url_name == "indexProduit" %}class="active"{% endif %}>
                     <a href="{% url 'indexProduit' %}">
                         Produits
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li {% if request.resolver_match.url_name == "contact" %}class="active"{% endif %}>
+                    <a href="{% url 'contact' %}">
                         Contact
                     </a>
                 </li>
-                <li>
+                <li {% if request.resolver_match.url_name == "panier" %}class="active"{% endif %}>
                     <a href="{% url 'panier' %}">
                         Panier 
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                     </a>
                 </li>
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'logout' %}">
+                            logout 
+                            {{ user.username }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'login' %}">login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'signup' %}">sign up</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
+    
+    {% bootstrap_messages %}
 
     {% block content %}
         Coucou
@@ -75,6 +94,10 @@
                     <p><p>
                     <a href="#">
                         Mentions légales
+                    </a>
+                    /
+                    <a href="{% url 'admin:index' %}">
+                        Admin
                     </a>
                 </div>
             </div>
