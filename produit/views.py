@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -24,6 +21,10 @@ def indexProduit(request):
 
     return render(request,'indexProduit.html', {'produits' : produits})
 
+def addProductPanier(request, id):
+    add_to_cart(request, id, 1)
+    messages.success(request, 'Ajout panier OK')
+    return redirect('indexProduit')
 
 def detailProduit(request, id):
     produit = FicheProduit.objects.get(id=id)

@@ -20,8 +20,11 @@
                             {{ produit.descCourte }}
                         </div>
                         <div class="card_footer">
-                            {{ produit.reference }}
+                            {{ produit.reference }} - {{produit.prix|floatformat}}€
                         </div>
+                        <a href="{% url 'addProductPanier' id=produit.id %}" class="btn btn-success">
+                            Ajouter
+                        </a>
                     </div>
                 </a>                
                 {% endfor %}

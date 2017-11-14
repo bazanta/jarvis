@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.indexProduit, name='indexProduit'),
+    url(r'^add/(?P<id>[0-9]+)$', views.addProductPanier, name="addProductPanier"),
     url(r'^(?P<id>[0-9]+)/$', views.detailProduit, name='detailProduit'),
 ]
 
