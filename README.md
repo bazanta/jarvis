@@ -4,14 +4,14 @@ Jarvis est un petit e-commerce écrit en python avec le framework Django.
 
 [X] Produits
 [ ] Gestion du Panier
-    [X] Ajout
-    [X] Suppression
-    [X] Modification
-    [ ] Commander
+  * [X] Ajout
+  * [X] Suppression
+  * [X] Modification
+  * [ ] Commander
 [X] Gestion des utilisateurs
-    [X] Connexion
-    [X] Déconnexion
-    [X] Inscription
+  * [X] Connexion
+  * [X] Déconnexion
+  * [X] Inscription
 [X] Contact
 [X] Administration
 [X] Gestion des fournisseurs
@@ -37,41 +37,46 @@ pip install -r lib_jarvis.txt
 ### Fournisseurs
 
 Gestion des fournisseurs dans l'administration :
-    * Ajout
-    * Suppression
-    * Modification
+  * Ajout
+  * Suppression
+  * Modification
 
 ### Produits
 
 Gestion des produits :
-    * page d'index des produits avec pagination
-    * page de consultation d'un produit
+  * page d'index des produits avec pagination
+  * page de consultation d'un produit
 
 Un produit possède :
-    * un nom
-    * une référence
-    * une description courte (pour l'aperçu)
-    * une description longue
-    * le nombre en stock
-    * une image
-    * un prix
+  * un nom
+  * une référence
+  * une description courte (pour l'aperçu)
+  * une description longue
+  * le nombre en stock
+  * une image
+  * un prix
+  * des commentaires
 
 Ajout d'un nouveau produit dans l'administration.
+
+Pour ajouter un commentaire, il faut être connecté.
 
 ### Panier
 
 Permet la gestion du panier, possibilités :
-   * d'ajouter un produit
-   * de supprimer un produit
-   * de modifier la quantité d'un produit
-   * de vider le panier si des produits sont dedans
+ * d'ajouter un produit
+ * de supprimer un produit
+ * de modifier la quantité d'un produit
+ * de vider le panier si des produits sont dedans
+
+Pour valider le panier, il faut être connecté.
 
 ### Users
 
 Gestion des utilisateurs :
-    * Connexion
-    * Déconnexion
-    * Inscription
+ * Connexion
+ * Déconnexion
+ * Inscription
 
 ### Contact
 
@@ -81,3 +86,9 @@ Page de contact. Envoie d'un mail.
 ### Administration
 
 Gestion des produits, fournisseurs, ...
+
+### Page accueil
+
+Contient un petit text descriptif du site.
+Puis affiche les 3 derniers produits ajoutés.
+Pour finir, un lien vers un flux RSS des derniers commentaires est présent.
