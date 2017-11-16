@@ -2,19 +2,19 @@
 
 Jarvis est un petit e-commerce écrit en python avec le framework Django.
 
-[X] Produits
-[ ] Gestion du Panier
+* Produits
+* Gestion du Panier
   * [X] Ajout
   * [X] Suppression
   * [X] Modification
   * [ ] Commander
-[X] Gestion des utilisateurs
+* Gestion des utilisateurs
   * [X] Connexion
   * [X] Déconnexion
   * [X] Inscription
-[X] Contact
-[X] Administration
-[X] Gestion des fournisseurs
+* Contact
+* Administration
+* Gestion des fournisseurs
 
 ## Requirements
 
@@ -81,7 +81,6 @@ Gestion des utilisateurs :
 ### Contact
 
 Page de contact. Envoie d'un mail.
-
 
 ### Administration
 
