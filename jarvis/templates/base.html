@@ -18,9 +18,7 @@
     <!-- Chargement du CSS -->
     {% load bootstrap3 %}
     {% bootstrap_css %}
-    <!-- Block css pour les pages 
-        <link rel="stylesheet" href="{% static 'css/news.css' %}"> 
-    -->
+        <link rel="stylesheet" href="{% static 'css/layout.css' %}"> 
     {% block css %}
     {% endblock %}
 </head>
@@ -87,9 +85,10 @@
     
     {% bootstrap_messages %}
 
-    {% block content %}
-        Coucou
-    {% endblock %}
+    <div id="page" class="container-fluid">
+        {% block content %}
+        {% endblock %}
+    </div>
 
     <!-- Footer -->
     <footer class="navbar-default navbar-fixed-bottom">

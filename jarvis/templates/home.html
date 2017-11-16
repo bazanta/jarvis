@@ -1,58 +1,91 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-offset-3 col-lg-6 col-sm-offset-3 col-sm-6 text-center">
-                <h1>
-                    Bienvenue sur Jarvis
-                    {% if user.is_authenticated %}
-                        {{ user.username }}
-                    {% endif %}
-                </h1>
-                <p>
-                    Jarvis, au bon lait de brebis!
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="jumbotron">
-                    <p>
-                        Et si le Guide des Armures édition Avengers : L’Ère d’Ultron était en réalité un arbre généalogique ? Nous avons le père (Iron Man), le frère baraqué (War Machine), les enfants turbulents (l’Iron Legion), le fils indigne (Ultron) et le petit-fils (Vision) !
-                    </p>
-                    <p>
-                        Vous trouverez ici toutes les armures portées par Tony Stark dans Iron Man, Iron Man 2, Avengers, Iron Man 3 et Avengers : L’Ère d’Ultron. De l’armure construite dans les grottes afghanes à la Bleeding Edge.  
-                    </p>
-                   </div>
-            </div>
+    <div class="row">
+        <div class="col-lg-offset-3 col-lg-6 col-sm-offset-3 col-sm-6 text-center">
+            <h1>
+                Bienvenue sur Jarvis
+                {% if user.is_authenticated %}
+                    {{ user.username }}
+                {% endif %}
+            </h1>
+            <p>
+                Jarvis, au bon lait de brebis!
+            </p>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="jumbotron">
+                <p>
+                    Et si le Guide des Armures édition Avengers : L’Ère d’Ultron était en réalité un arbre généalogique ? Nous avons le père (Iron Man), le frère baraqué (War Machine), les enfants turbulents (l’Iron Legion), le fils indigne (Ultron) et le petit-fils (Vision) !
+                </p>
+                <p>
+                    Vous trouverez ici toutes les armures portées par Tony Stark dans Iron Man, Iron Man 2, Avengers, Iron Man 3 et Avengers : L’Ère d’Ultron. De l’armure construite dans les grottes afghanes à la Bleeding Edge.  
+                </p>
+                </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
             <h1>
                 3 dernières armures ajoutées
             </h1>
-            {% for produit in produits %}
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                {% if produit.image %}
-                <img src="{{produit.image.url}}" class="img-responsive watch-right" alt="{{ produit.nom }}" />
-                {% endif %}
-                <a href="{% url 'detailProduit' id=produit.id %}">
-                    <div class="card" style="border: 1px solid rgb(70, 65, 65); margin:10px;">
-                        <div class="card_title">
-                            {{ produit.nom }}
-                        </div>                        
-                        <div class="card_content">
-                            {{ produit.descCourte }}
+            <hr>
+        </div>
+        {% for produit in produits %}
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <a href="{% url 'detailProduit' id=produit.id %}">
+                <div class="card">
+                    {% if produit.image %}
+                        <div class="card_img" style="background: url({{ produit.image.url }});">
                         </div>
-                        <div class="card_footer">
-                            {{ produit.reference }}
+                    {% endif %}
+                    <div class="card_content">
+                        <div class="card_title">
+                            <h4>
+                                {{ produit.nom }}
+                            </h4>
+                            <hr>
+                        </div>                        
+                        <div class="card_text">
+                            <p>
+                                {{ produit.descCourte }}
+                            </p>
+                            <div class="card_actions">
+                                <a href="{% url 'addProductPanier' id=produit.id %}" class="btn btn-primary">
+                                    Ajouter
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </a>
-            </div>      
-            {% endfor %}
-        </div>
-    </div>       
+                    <div class="card_footer">
+                        <ul>
+                            <li>
+                                <span class=" glyphicon glyphicon-tags"></span>
+                                {{produit.prix|floatformat}}€
+                            </li>
+                            {% if produit.commentaires.count > 0 %}
+                                <li>
+                                    <span class=" glyphicon glyphicon-comment"></span>
+                                    {{ produit.commentaires.count }}
+                                </li>
+                            {% endif %}
+                        </ul>
+                        
+                        
+                    </div>
+                </div>
+            </a> 
+        </div>      
+        {% endfor %}
+    </div> 
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>
+                Dernières commentaires
+            </h1>
+            <hr>
+        </div> 
+    </div>   
 {% endblock %}

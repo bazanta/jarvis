@@ -10,6 +10,3 @@ urlpatterns = [
     url(r'^add/(?P<id>[0-9]+)$', views.addProductPanier, name="addProductPanier"),
     url(r'^(?P<id>[0-9]+)/$', views.detailProduit, name='detailProduit'),
 ]
-
-urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

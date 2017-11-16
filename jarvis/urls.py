@@ -13,3 +13,6 @@ urlpatterns = [
     url(r'^panier/', include('panier.urls')),
     url(r'^users/', include('register.urls')),
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -11,7 +11,7 @@ def indexProduit(request):
     produits = FicheProduit.objects.all()
 
     # Gestion de la pagination
-    paginator = Paginator(produits, 5) 
+    paginator = Paginator(produits, 9) 
     page = request.GET.get('page')
     try:
         produits = paginator.page(page)
