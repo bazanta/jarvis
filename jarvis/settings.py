@@ -80,12 +80,14 @@ WSGI_APPLICATION = 'jarvis.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jarvis',
-	'USER': 'symfony',
-	'PASSWORD': 'symfony',
-	'HOST': 'localhost',
-	'PORT': '',
+       # 'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
+       # 'NAME': 'jarvis',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+       # 'USER': 'jarvis',
+       # 'PASSWORD': 'M2ACDI',
+       # 'HOST': '',
+       # 'PORT': '',
     }
 }
 
