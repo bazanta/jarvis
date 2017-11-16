@@ -14,6 +14,20 @@ a:hover {
     text-decoration: none;
 }
 
+.imgJarvis {
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.footer {
+    border-top: 1px solid black;    
+    /*box-shadow: 3px 3px 5px 4px #656565;*/
+    background-color: #07394d;
+    color: white;
+}
+
 /*
  * Cartes
  */
@@ -35,11 +49,7 @@ a:hover {
 }
 
 .card .card_img {
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
     height: 400px;
-    width: 100%;
 }
 .card .card_img img {
     height: 100%;
@@ -77,3 +87,33 @@ a:hover {
     display: inline;
     margin: 5px;
 }
+
+/*
+ * Commentaires
+ */
+
+#comments {
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.comment {
+    text-align: left;
+    border: 1px solid rgb(59, 59, 59);
+    margin: 15px 5px;
+ }
+
+ .comment .content {
+     padding: 15px;
+ }
+
+ .comment .date {
+    background-color: grey;
+    text-align: right;
+    padding: 5px;
+ }
+
+ #comments textarea {
+     width: 100%;
+ }

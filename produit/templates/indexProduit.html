@@ -20,7 +20,7 @@
                         <a href="{% url 'detailProduit' id=produit.id %}">
                             <div class="card">
                                 {% if produit.image %}
-                                    <div class="card_img" style="background: url({{ produit.image.url }});">
+                                    <div class="card_img imgJarvis" style="background-image: url({{ produit.image.url }});">
                                     </div>
                                 {% endif %}
                                 <div class="card_content">

@@ -6,49 +6,69 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="jumbotron">
-                <h1>{{produit.nom}}</h1>
-                <p>
-                    {{produit.descLong}}
-                </p>
-                <p>
-                    {{produit.prix|floatformat}}€
-                </p>
-            </div>
-            <div>
-                <form action="{% url 'detailProduit' id=produit.id %}" method="post">
-                    {% csrf_token %}
-                    {{ form }}
-                    <input type="submit" class="btn btn-success" value="Ajouter" />
-                </form>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="imgJarvis" style="background-image: url({{ produit.image.url }}); height:100vh;">
             </div>
         </div>
-    </div>
-    <div class="row">
-        
-        <div class="col-lg-12">
-            {% if user.is_authenticated %}
-                <form action="{% url 'addCommentaire' id=produit.id %}" method="post">
-                    {% csrf_token %}
-                    {{ formCommentaire }}
-                    <input type="submit" class="btn btn-success" value="Ajouter" />
-                </form>
-            {% else %}
-                <p>
-                    Veuillez vous connecter pour pouvoir ajouter un commentaire
-                </p>
-            {% endif %}
-        </div>
-
-        {% for comment in produit.commentaires.all %}
-            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 text-center">
-                <div class="comment">
-                    <div class="date">{{ comment.date }}</div>
-                    <strong>{{ comment.auteur }}</strong>
-                    <p>{{ comment.text|linebreaks }}</p>
+        <div class="col-lg-8 col-md-8 col-sm-6">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="jumbotron">
+                        <h1>{{produit.nom}}</h1>
+                        <p>
+                            {{produit.descLong}}
+                        </p>
+                        <p>
+                            {{produit.prix|floatformat}}€
+                        </p>
+                    </div>
+                    <div>
+                        <form action="{% url 'detailProduit' id=produit.id %}" method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                            <input type="submit" class="btn btn-success" value="Ajouter" />
+                        </form>
+                    </div>
                 </div>
             </div>
-        {% endfor %} 
+            <div class="row">        
+                <div id="comments" class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+                    <div class="row">
+                        <h3>
+                            Commentaires
+                        </h3>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            {% if user.is_authenticated %}
+                                <form action="{% url 'addCommentaire' id=produit.id %}" method="post">
+                                    {% csrf_token %}
+                                    {{ formCommentaire.text }}
+                                    <br />
+                                    <br />
+                                    <input type="submit" class="btn btn-primary" value="Envoyer" />
+                                </form>
+                            {% else %}
+                                <p>
+                                    Veuillez vous connecter pour pouvoir ajouter un commentaire
+                                </p>
+                            {% endif %}
+                        </div>
+                        {% for comment in produit.commentaires.all %}
+                            <div class="col-lg-12 text-center">
+                                <div class="comment">
+                                    <div class="content">
+                                        <strong>{{ comment.auteur }}</strong>
+                                        <p>{{ comment.text|linebreaks }}</p>
+                                    </div>
+                                    <div class="date">{{ comment.date }}</div>
+                                </div>
+                            </div>
+                        {% endfor %} 
+                    </div>            
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
