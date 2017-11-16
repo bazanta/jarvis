@@ -83,9 +83,25 @@
     <div class="row">
         <div class="col-lg-12">
             <h1>
-                Dernières commentaires
+                Dernières commentaires (flux RSS) : 
+                <a href="{% url 'latestComments'%}" class="rss">
+                    Commentaires
+                </a>
             </h1>
             <hr>
+            <!--
+            <div>
+                <ul>
+                    {% for entry in feeds.entries %}
+                        <li>
+                            <a href="{{entry.link}}">
+                                {{entry.title}}
+                            </a>
+                        </li>                
+                    {% endfor %}
+                </ul>
+            </div>
+            -->
         </div> 
     </div>   
 {% endblock %}

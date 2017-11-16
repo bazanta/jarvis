@@ -3,6 +3,7 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from produit.models import *
+from produit.flux import DerniersCommentairesFeed
 from forms import *
 
 def home(request):

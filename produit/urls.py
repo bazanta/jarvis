@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^addCommentaire/(?P<id>[0-9]+)$', views.addCommentaire, name="addCommentaire"),
     url(r'^add/(?P<id>[0-9]+)$', views.addProductPanier, name="addProductPanier"),
     url(r'^(?P<id>[0-9]+)/$', views.detailProduit, name='detailProduit'),
-    url(r'^rss$', DerniersCommentairesFeed())
+    url(r'^rss$', DerniersCommentairesFeed(), name='latestComments')
 ]
